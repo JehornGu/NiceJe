@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="node_modules/nicescroll/jquery.nicescroll.js"></script>
+	<script src="node_modules/jquery-smoove/dist/jquery.smoove.js"></script>
+
+    <style type="text/css">
+    	.block-nav .navs {
+    		min-height: 300px;
+    		border: 1px solid #ff5f00;
+    	}
+    	.first-screen {
+    		border: 1px solid #ff5f00;
+    	}
+    </style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row first-screen-box">
+			<div class="col-lg-12">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="first-screen">首屏</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 block-smoove block-nav">
+				<div class="navs nav-a">导航块a</div>
+			</div>
+			<div class="col-lg-6 block-smoove block-nav">
+				<div class="navs nav-b">导航块b</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	const createEle = {};
+	const initStyle = {};
+	createEle.body = document.body;
+	
+	createEle.createDiv = text => {
+		let div = document.createElement('div');
+		div.innerHTML = text;
+		createEle.body.appendChild(div);
+	};
+
+	initStyle.firstScreenHeight = () => {
+		$('.first-screen').height($(window).height());
+	};
+
+	$(document).ready(function() {
+		$("html").niceScroll({
+			cursorcolor: "#ff5f00", // 改变滚动条颜色
+			cursoropacitymin: .01, // 滚动条隐藏时最小透明度(0-1, default: 0)
+			cursoropacitymax: .9, // 滚动条显示时最大透明度(0-1, default: 1)
+			cursorwidth: "6px", // 滚动条宽度 (default: "5px")
+			cursorborder: "1px solid #000", // 滚动条边框(default: "1px solid #fff")
+			cursorborderradius: "10px", // 边框圆角半径(default: "5px")
+			zindex: "auto", // 更改滚动条的z-index([number] | default: "auto")
+			scrollspeed: 200, // 平滑滚动速度(default: 60), 越大越平滑
+			mousescrollstep: 40, // 滚动速度与鼠标滚轮(像素 | default: 40), 滚轮滚动大小，越大滚得越远
+			emulatetouch: false, // 启用光标拖动像台式电脑中的触摸设备
+			boxzoom: true, // 启用内容缩放
+		    dblclickzoom: true, // （仅当boxzoom = true时）zoom activated when double click on box
+		    gesturezoom: true, // (仅当boxzoom = true 且在触摸设备时) zoom activated when pinch out/in on box
+		    grabcursorenabled: true // (only when touchbehavior=true) display "grab" icon
+		    // 更多选项详见[https://github.com/inuyaksa/jquery.nicescroll]
+		});
+		
+		initStyle.firstScreenHeight();
+		$(window).on('resize', e => {
+			initStyle.firstScreenHeight();
+		});
+
+		for(let i = 0; i < 500; i++) {
+			createEle.createDiv('测试~~~~' + i);
+		}
+
+		$('.block-smoove').smoove({offset:'10%'});
+
+		
+	});
+	
+
+	
+	
+
+</script>
+</body>
+</html>
