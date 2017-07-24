@@ -1,0 +1,36 @@
+/*超出省略号*/
+.text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*float*/
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.clearfix:before {
+  clear: both;
+  display: table;
+  visibility: hidden;
+  height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+  display: table;
+  visibility: hidden;
+  height: 0;
+  content: "";
+}
+
+/*flex box*/
+.box {
+  display: flex;
+  .box-item {
+  	flex: auto;
+  }
+}

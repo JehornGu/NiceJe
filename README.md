@@ -1,14 +1,30 @@
-### Name brain storming
-> - 青至
-  - 灵智
-  - 随心
-  - 遂心
-  - 灵心
-  - 异步 伊布 伊卜 
-  - js 翟艾斯 宅艾肆 宅艾丝 宅丝 宅思 宅斯 宅私
-  - 瞻思 (含义: 前瞻 思考; 取js谐音，意指前端) Jans
-  - 智思
-  - Zzz
-  - 耐思智(含义: nice 棒 智慧)  NiceJe
-  
-# NiceJe(耐思智) 网站前端仓库
+# NiceJe
+
+> Front-end of Website NiceJe.
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
+```
+
+

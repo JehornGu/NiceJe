@@ -1,0 +1,38 @@
+@import './variable.less';
+
+[v-cloak] {
+  display: none;
+}
+
+::selection { 
+  background: @theme-pink; 
+  color: white;
+}
+
+.wrapper-container {
+  margin-left: 7.14%;
+  margin-right: 7.14%;
+}
+
+body {
+  margin: 0!important;
+  padding: 0!important;
+  background-color: white;
+  font-size: @text-size;
+  color: black;
+  font-family: Consolas, Arial !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a, a:hover, a:focus {
+  text-decoration: none;
+}
+a img {
+  border: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
