@@ -3,6 +3,7 @@ var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var webpack = require('webpack')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -27,6 +28,12 @@ module.exports = {
       '@': resolve('src')
     }
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+       jQuery: "jquery",
+       $: "jquery"
+    })
+  ],
   module: {
     rules: [
       {

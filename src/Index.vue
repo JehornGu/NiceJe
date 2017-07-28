@@ -1,12 +1,20 @@
 <template>
   <div class="main-body">
-
+	<home-video></home-video>
   </div>
 </template>
 
 <script>
+import HomeVideo from './components/pages/home-video.vue'
+
 export default {
-  name: 'app-index'
+  name: 'app-index',
+  data () {
+    return {}
+  },
+  components: {
+    HomeVideo: HomeVideo
+  }
 }
 </script>
 

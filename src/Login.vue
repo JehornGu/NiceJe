@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img src="./assets/logo_03.png" height="63" width="117">
     <login-in></login-in>
     <a href="index.html">index</a>
   </div>

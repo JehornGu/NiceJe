@@ -12,19 +12,15 @@
 .pull-right {
   float: right;
 }
-.clearfix:before {
-  clear: both;
-  display: table;
-  visibility: hidden;
-  height: 0;
-  content: "";
-}
-.clearfix:after {
-  clear: both;
-  display: table;
-  visibility: hidden;
-  height: 0;
-  content: "";
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 /*flex box*/
@@ -34,3 +30,4 @@
   	flex: auto;
   }
 }
+
