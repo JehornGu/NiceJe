@@ -1,6 +1,6 @@
 @import './variable.less';
 
-/*换行会报错*/
+/*TODO 换行会报错*/
 @font-face { font-family: 'Letter Gothic Std'; src: url('../assets/fonts/LetterGothicStd.otf'); }
 @font-face { font-family: 'Consolas'; src: url('../assets/fonts/consola.ttf'); }
 
@@ -8,14 +8,17 @@
   display: none;
 }
 
-::selection { 
-  background: @theme-pink; 
+::selection {
+  background: @theme-pink;
   color: white;
 }
 
 .wrapper-container {
-  margin-left: 7.14%;
-  margin-right: 7.14%;
+  margin-left: @document-padding;
+  margin-right: @document-padding;
+}
+.section {
+  height: @section-height;
 }
 
 body {
@@ -35,8 +38,10 @@ a, a:hover, a:focus {
 a img {
   border: 0;
 }
-ul {
+h1, h2, h3, h4, h5, ul, p {
   margin: 0;
+}
+ul {
   padding: 0;
   list-style: none;
 }

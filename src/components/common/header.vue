@@ -1,5 +1,6 @@
 <template>
     <header class="main-header">
+      <input type="hidden" name="main-header-bg" value="" />
 	  	<div class="wrapper-container">
         <div class="row">
           <div class="col col-lg-4 col-md-2 col-xs-5 logo">
@@ -107,19 +108,25 @@ export default {
       this.navActiveInit()
     },
     // Init line width & position
-    navActiveInit () {
+    navActiveInit (isAnimate = true) {
       let li = $('.main-header .nav>.custom-menu>ul>li')
       let line = $('.main-header .nav>.custom-menu>ul>.active-border')
       let active
       this.nav.forEach((ele, index) => {
         if (ele.active === 'true' || ele.active === true) {
           let navWidth = li.eq(index).find('a').innerWidth()
+          let speed = 300
+          if (!isAnimate) {
+            speed = 0
+          }
           active = index
-          line.stop().animate({ width: navWidth }, 300)
+          line.stop().animate({ width: navWidth }, speed)
         }
       })
 
-      this.mathActiveLinePosition(active)
+      if (isAnimate) {
+        this.mathActiveLinePosition(active)
+      }
     },
     // Computed position of active line
     mathActiveLinePosition (active) {
@@ -188,12 +195,48 @@ export default {
     // Menu box hide finished
     beforeMenuBoxLeave () {
       this.isMenuContentShow = false
+    },
+    // Scroll to change main-header background-color
+    scrollBackground () {
+      // 获取当前元素所有最终使用的CSS属性值 （元素, 伪类）
+      let titleMarginTop = window.getComputedStyle(document.querySelector('.home-video .index-title'), null).marginTop
+      let headerHeight = document.querySelector('header.main-header')
+      let scrollTop = document.body.scrollTop
+
+      if (scrollTop > parseFloat(titleMarginTop) - parseFloat(headerHeight.offsetHeight)) {
+        headerHeight.classList.add('show')
+      } else {
+        headerHeight.classList.remove('show')
+      }
+      setTimeout(() => {
+        this.navActiveInit()
+      }, 401)
+      // 滚动监听
+      document.addEventListener('scroll', e => {
+        // 获取当前元素所有最终使用的CSS属性值 （元素, 伪类）
+        let titleMarginTop = window.getComputedStyle(document.querySelector('.home-video .index-title'), null).marginTop
+        let headerHeight = document.querySelector('header.main-header')
+        let scrollTop = document.body.scrollTop
+
+        if (scrollTop > parseFloat(titleMarginTop) - parseFloat(headerHeight.offsetHeight)) {
+          headerHeight.classList.add('show')
+        } else {
+          headerHeight.classList.remove('show')
+        }
+        setTimeout(() => {
+          this.navActiveInit(false)
+        }, 0)
+      })
     }
   },
   mounted () {
+    // Init active navigations
     this.$nextTick(() => {
       setTimeout(() => {
         this.navActiveInit()
+
+        // Scroll
+        this.scrollBackground()
       }, 0)
     })
   }
@@ -202,7 +245,7 @@ export default {
 
 <style lang="less" scoped>
   @import '../../styles/index.less';
-  
+
   .header-nav-width(0);
   .main-header {
     position: fixed;
@@ -213,6 +256,11 @@ export default {
     padding-top: (@header-height-default - @header-logo-height) / 2;
     padding-bottom: (@header-height-default - @header-logo-height) / 2;
     z-index: @header-index;
+    transition: background-color .3s ease-out, padding-top .4s ease-out, padding-bottom .4s ease-out;
+    input[name="main-header-bg"] {
+      color: @theme-black;
+    }
+
   	.row {
   	  justify-content: space-between;
   	  .col {
@@ -224,6 +272,7 @@ export default {
             height: @header-logo-height;
             img {
               height: 100%;
+              transition: all 0.3s ease-out;
             }
           }
   	  	}
@@ -263,6 +312,7 @@ export default {
                 display: inline-block;
                 height: @header-logo-height;
                 text-transform: capitalize;
+                transition: all 0.3s ease-out;
               }
             }
           }
@@ -363,7 +413,7 @@ export default {
                   transition: all .3s ease-in;
                 }
               }
-            } 
+            }
           }
         }
         > .copyright {
@@ -371,7 +421,27 @@ export default {
           color: darken(@nav-color, 50%);
           font-size: @text-size - 2;
         }
-      } 
+      }
+    }
+
+    &.show {
+      background-color: @theme-black;
+      padding-top: (@header-height-default - @header-logo-height) / 6;
+      padding-bottom: (@header-height-default - @header-logo-height) / 6;
+      transition: background-color 0s ease-in, padding-top .4s ease-in, padding-bottom .4s ease-in;
+      .row .col {
+        &.logo {
+  	  	  .img {
+            height: @header-logo-height - 10;
+            margin-top: 10px;
+            transition: all 0.3s ease-in;
+          }
+        }
+        &.nav .custom-menu ul li a {
+          font-size: @text-size + 10;
+          transition: all 0.3s ease-in;
+        }
+      }
     }
   }
 

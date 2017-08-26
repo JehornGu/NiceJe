@@ -70,3 +70,19 @@
     transform: translate3d(0, -2000px, 0);
   }
 }
+
+/*top 2 bottom 2 top looper*/
+@keyframes move-top2bottom {
+  form {
+    top: 10%;
+  }
+  25% {
+    top: @mouse-icon-size * 1.4 - @mouse-icon-roller-size * 3 - 4 - 10;
+  }
+  75% {
+    top: @mouse-icon-size * 1.4 - @mouse-icon-roller-size * 3 - 4 - 5;
+  }
+  to {
+    top: 10%;
+  }
+}
