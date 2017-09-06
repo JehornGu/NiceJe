@@ -3,6 +3,7 @@
     <input type="hidden" name="theme-pink" />
 	  <home-video></home-video>
     <home-second-section></home-second-section>
+    <home-third-section></home-third-section>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import $ from 'jquery'
 import HomeVideo from './components/pages/home-video.vue'
 import HomeSecondSect from './components/pages/home-second-section.vue'
+import HomeThirdSect from './components/pages/home-third-section.vue'
 
 export default {
   name: 'app-index',
@@ -18,7 +20,8 @@ export default {
   },
   components: {
     HomeVideo: HomeVideo,
-    HomeSecondSection: HomeSecondSect
+    HomeSecondSection: HomeSecondSect,
+    HomeThirdSection: HomeThirdSect
   },
   methods: {
     // Init scroll bar
@@ -38,7 +41,8 @@ export default {
         boxzoom: true, // 启用内容缩放
         dblclickzoom: true, // （仅当boxzoom = true时）zoom activated when double click on box
         gesturezoom: true, // (仅当boxzoom = true 且在触摸设备时) zoom activated when pinch out/in on box
-        grabcursorenabled: true // (only when touchbehavior=true) display "grab" icon
+        grabcursorenabled: true, // (only when touchbehavior=true) display "grab" icon
+        horizrailenabled: false
         // 更多选项详见[https://github.com/inuyaksa/jquery.nicescroll]
       })
     }
@@ -58,4 +62,5 @@ export default {
   input[name="theme-pink"] {
     color: @theme-pink;
   }
+
 </style>
